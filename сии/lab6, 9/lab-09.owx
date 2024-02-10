@@ -1,0 +1,500 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/amunra23/ontologies/2024/1/untitled-ontology-3"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/amunra23/ontologies/2024/1/untitled-ontology-3">
+    <Prefix name="" IRI="http://www.semanticweb.org/amunra23/ontologies/2024/1/untitled-ontology-3/"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#Акции"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Банковский_сектор"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Верхняя"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Виды"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Все"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Высокий"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Государственные"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Группа_мышц"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Добавить_бумагу_по_критериям"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Долгосрочные"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Кол"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Краткосрочные"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Лайкнуть_бумагу"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#На_выносливость"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#На_скорость"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Набор_массы"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Направленность"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Нижняя"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Низкий"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Облигации"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Опционы"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Поддержание_формы"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Показать_бумагу_по_критериям"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Показать_похожие_бумаги"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Потребительский_сектор"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Похудение"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Промышленный_сектор"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Пут"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Сравнить_пару_бумаг"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Среднесрочные"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Средний"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Сценарии"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Технологический_сектор"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Требуемый_уровень_подготовки"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Удалить_бумагу_по_критериям"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Укрепление_мышц"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Фьючерсы"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Ценные_бумаги"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Частные"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Энергетический_сектор"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#Время_тренировки"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#Количество_подходов"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#Требуется_спортивный_инвентарь"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#training_example_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#training_example_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#training_example_4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#training_example_5"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#traiting_example_1"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Акции"/>
+        <Class IRI="#Виды"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Банковский_сектор"/>
+        <Class IRI="#Акции"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Верхняя"/>
+        <Class IRI="#Группа_мышц"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Виды"/>
+        <Class IRI="#Ценные_бумаги"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Все"/>
+        <Class IRI="#Группа_мышц"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Высокий"/>
+        <Class IRI="#Требуемый_уровень_подготовки"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Государственные"/>
+        <Class IRI="#Облигации"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Группа_мышц"/>
+        <Class IRI="#Ценные_бумаги"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Добавить_бумагу_по_критериям"/>
+        <Class IRI="#Сценарии"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Долгосрочные"/>
+        <Class IRI="#Фьючерсы"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Кол"/>
+        <Class IRI="#Опционы"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Краткосрочные"/>
+        <Class IRI="#Фьючерсы"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Лайкнуть_бумагу"/>
+        <Class IRI="#Сценарии"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#На_выносливость"/>
+        <Class IRI="#Государственные"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#На_скорость"/>
+        <Class IRI="#Государственные"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Набор_массы"/>
+        <Class IRI="#Направленность"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Направленность"/>
+        <Class IRI="#Ценные_бумаги"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Нижняя"/>
+        <Class IRI="#Группа_мышц"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Низкий"/>
+        <Class IRI="#Требуемый_уровень_подготовки"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Облигации"/>
+        <Class IRI="#Виды"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Опционы"/>
+        <Class IRI="#Виды"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Поддержание_формы"/>
+        <Class IRI="#Направленность"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Показать_бумагу_по_критериям"/>
+        <Class IRI="#Сценарии"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Показать_похожие_бумаги"/>
+        <Class IRI="#Сценарии"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Потребительский_сектор"/>
+        <Class IRI="#Акции"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Похудение"/>
+        <Class IRI="#Направленность"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Промышленный_сектор"/>
+        <Class IRI="#Акции"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Пут"/>
+        <Class IRI="#Опционы"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Сравнить_пару_бумаг"/>
+        <Class IRI="#Сценарии"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Среднесрочные"/>
+        <Class IRI="#Фьючерсы"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Средний"/>
+        <Class IRI="#Требуемый_уровень_подготовки"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Сценарии"/>
+        <Class IRI="#Ценные_бумаги"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Технологический_сектор"/>
+        <Class IRI="#Акции"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Требуемый_уровень_подготовки"/>
+        <Class IRI="#Ценные_бумаги"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Удалить_бумагу_по_критериям"/>
+        <Class IRI="#Сценарии"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Укрепление_мышц"/>
+        <Class IRI="#Направленность"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Фьючерсы"/>
+        <Class IRI="#Виды"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Частные"/>
+        <Class IRI="#Облигации"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Энергетический_сектор"/>
+        <Class IRI="#Акции"/>
+    </SubClassOf>
+    <ClassAssertion>
+        <Class IRI="#Все"/>
+        <NamedIndividual IRI="#training_example_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Краткосрочные"/>
+        <NamedIndividual IRI="#training_example_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Средний"/>
+        <NamedIndividual IRI="#training_example_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Укрепление_мышц"/>
+        <NamedIndividual IRI="#training_example_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#На_скорость"/>
+        <NamedIndividual IRI="#training_example_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Нижняя"/>
+        <NamedIndividual IRI="#training_example_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Низкий"/>
+        <NamedIndividual IRI="#training_example_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Поддержание_формы"/>
+        <NamedIndividual IRI="#training_example_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Все"/>
+        <NamedIndividual IRI="#training_example_4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Низкий"/>
+        <NamedIndividual IRI="#training_example_4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Поддержание_формы"/>
+        <NamedIndividual IRI="#training_example_4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Все"/>
+        <NamedIndividual IRI="#training_example_5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Низкий"/>
+        <NamedIndividual IRI="#training_example_5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Поддержание_формы"/>
+        <NamedIndividual IRI="#training_example_5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Верхняя"/>
+        <NamedIndividual IRI="#traiting_example_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Набор_массы"/>
+        <NamedIndividual IRI="#traiting_example_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Средний"/>
+        <NamedIndividual IRI="#traiting_example_1"/>
+    </ClassAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Время_тренировки"/>
+        <NamedIndividual IRI="#training_example_2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">25</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Количество_подходов"/>
+        <NamedIndividual IRI="#training_example_2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Требуется_спортивный_инвентарь"/>
+        <NamedIndividual IRI="#training_example_2"/>
+        <Literal>нет</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Время_тренировки"/>
+        <NamedIndividual IRI="#training_example_3"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">50</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Количество_подходов"/>
+        <NamedIndividual IRI="#training_example_3"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">30</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Требуется_спортивный_инвентарь"/>
+        <NamedIndividual IRI="#training_example_3"/>
+        <Literal>нет</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Время_тренировки"/>
+        <NamedIndividual IRI="#training_example_4"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">10</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Количество_подходов"/>
+        <NamedIndividual IRI="#training_example_4"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Требуется_спортивный_инвентарь"/>
+        <NamedIndividual IRI="#training_example_4"/>
+        <Literal>нет</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Время_тренировки"/>
+        <NamedIndividual IRI="#training_example_5"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">30</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Количество_подходов"/>
+        <NamedIndividual IRI="#training_example_5"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">10</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Требуется_спортивный_инвентарь"/>
+        <NamedIndividual IRI="#training_example_5"/>
+        <Literal>нет</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Время_тренировки"/>
+        <NamedIndividual IRI="#traiting_example_1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">10</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Количество_подходов"/>
+        <NamedIndividual IRI="#traiting_example_1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Требуется_спортивный_инвентарь"/>
+        <NamedIndividual IRI="#traiting_example_1"/>
+        <Literal>да</Literal>
+    </DataPropertyAssertion>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#Время_тренировки"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#Количество_подходов"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#Требуется_спортивный_инвентарь"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#training_example_2</IRI>
+        <Literal>Бабочка</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#training_example_3</IRI>
+        <Literal>Интервальный бег</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#training_example_4</IRI>
+        <Literal>Удержание тела в воздухе</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#training_example_5</IRI>
+        <Literal>Кроль</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#traiting_example_1</IRI>
+        <Literal>Жим штанги</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi -->
+

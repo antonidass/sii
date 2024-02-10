@@ -1,0 +1,50 @@
+noun — существительное
+verb — глагол
+article — артикль
+adjective — прилагательное
+
+sentence: Gnoun, Gverb.
+
+Gnoun: verb, Gnoun2.
+Gnoun: Gnoun2.
+
+Gnoun2: article, Gnoun2.
+Gnoun2: noun.
+
+Gnoun3: adjective, Gnoun3.
+
+
+Gverb: verb.
+Gverb: article, Gnoun.
+
+/////////////////////////////////////////////////////////
+
+Диалог 1
+
+Предложение 1:
+- Подскажи бумагу, которая мало стоит.
+
+sentence: Gnoun = "Подскажи бумагу", Gverb = "с низкой стоимостью".
+
+Gnoun: verb = "Подскажи", Gnoun2 = "бумагу".
+Gverb: article = "которая", Gnoun = "мало стоит".
+
+Gnoun2: noun = "бумагу".
+Gnoun: verb = "стоит", Gnoun2 = "мало".
+
+Gnoun2: article = "на", Gnoun2 = "выходных".
+Gnoun2: noun = "выходных".
+
+
+Предложение 2:
+- Покажи места, где позагорать недалеко.
+
+sentence: Gnoun = "Покажи места", Gverb = "где позагорать недалеко".
+
+Gnoun: verb = "Покажи", Gnoun2 = "места".
+Gverb: article = "где", Gnoun = "позагорать недалеко".
+
+Gnoun2: noun = "места".
+Gnoun: Gverb = "позагорать", Gnoun2 = "недалеко".
+
+Gnoun2: noun = "недалеко".
