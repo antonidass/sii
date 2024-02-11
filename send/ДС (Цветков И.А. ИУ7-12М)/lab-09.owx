@@ -1,0 +1,498 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/amunra23/ontologies/2024/1/untitled-ontology-3"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/amunra23/ontologies/2024/1/untitled-ontology-3">
+    <Prefix name="" IRI="http://www.semanticweb.org/amunra23/ontologies/2024/1/untitled-ontology-3/"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#Бег"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Велосипед"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Верхняя"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Все"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Высокий"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Гибкость"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Гимнастика"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Группа_мышц"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Добавить_тренировку_по_критериям"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Йога"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Кардио"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Категории"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Лайкнуть_тренировку"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#На_выносливость"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#На_скорость"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Набор_массы"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Направленность"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Нижняя"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Низкий"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Отягощающие"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Плавание"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Поддержание_формы"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Показать_похожие_тренировки"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Показать_тренировку_по_критериям"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Похудение"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Рекреационная"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Сводобные_веса"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Силовые"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Со_своим_весом"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Спортианые_тренировки"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Спортивная"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Сравнить_пару_тренировок"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Средний"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Сценарии"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Требуемый_уровень_подготовки"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Тренажеры"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Удалить_тренировку_по_критериям"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Укрепление_мышц"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#Время_тренировки"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#Количество_подходов"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#Требуется_спортивный_инвентарь"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#training_example_2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#training_example_3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#training_example_4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#training_example_5"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#traiting_example_1"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Бег"/>
+        <Class IRI="#Кардио"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Велосипед"/>
+        <Class IRI="#Кардио"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Верхняя"/>
+        <Class IRI="#Группа_мышц"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Все"/>
+        <Class IRI="#Группа_мышц"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Высокий"/>
+        <Class IRI="#Требуемый_уровень_подготовки"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Гибкость"/>
+        <Class IRI="#Категории"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Гимнастика"/>
+        <Class IRI="#Гибкость"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Группа_мышц"/>
+        <Class IRI="#Спортианые_тренировки"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Добавить_тренировку_по_критериям"/>
+        <Class IRI="#Сценарии"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Йога"/>
+        <Class IRI="#Гибкость"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Кардио"/>
+        <Class IRI="#Категории"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Категории"/>
+        <Class IRI="#Спортианые_тренировки"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Лайкнуть_тренировку"/>
+        <Class IRI="#Сценарии"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#На_выносливость"/>
+        <Class IRI="#Бег"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#На_скорость"/>
+        <Class IRI="#Бег"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Набор_массы"/>
+        <Class IRI="#Направленность"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Направленность"/>
+        <Class IRI="#Спортианые_тренировки"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Нижняя"/>
+        <Class IRI="#Группа_мышц"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Низкий"/>
+        <Class IRI="#Требуемый_уровень_подготовки"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Отягощающие"/>
+        <Class IRI="#Силовые"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Плавание"/>
+        <Class IRI="#Кардио"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Поддержание_формы"/>
+        <Class IRI="#Направленность"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Показать_похожие_тренировки"/>
+        <Class IRI="#Сценарии"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Показать_тренировку_по_критериям"/>
+        <Class IRI="#Сценарии"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Похудение"/>
+        <Class IRI="#Направленность"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Рекреационная"/>
+        <Class IRI="#Гимнастика"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Сводобные_веса"/>
+        <Class IRI="#Отягощающие"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Силовые"/>
+        <Class IRI="#Категории"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Со_своим_весом"/>
+        <Class IRI="#Силовые"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Спортивная"/>
+        <Class IRI="#Гимнастика"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Сравнить_пару_тренировок"/>
+        <Class IRI="#Сценарии"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Средний"/>
+        <Class IRI="#Требуемый_уровень_подготовки"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Сценарии"/>
+        <Class IRI="#Спортианые_тренировки"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Требуемый_уровень_подготовки"/>
+        <Class IRI="#Спортианые_тренировки"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Тренажеры"/>
+        <Class IRI="#Отягощающие"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Удалить_тренировку_по_критериям"/>
+        <Class IRI="#Сценарии"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Укрепление_мышц"/>
+        <Class IRI="#Направленность"/>
+    </SubClassOf>
+    <ClassAssertion>
+        <Class IRI="#Все"/>
+        <NamedIndividual IRI="#training_example_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Со_своим_весом"/>
+        <NamedIndividual IRI="#training_example_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Средний"/>
+        <NamedIndividual IRI="#training_example_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Укрепление_мышц"/>
+        <NamedIndividual IRI="#training_example_2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#На_скорость"/>
+        <NamedIndividual IRI="#training_example_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Нижняя"/>
+        <NamedIndividual IRI="#training_example_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Низкий"/>
+        <NamedIndividual IRI="#training_example_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Поддержание_формы"/>
+        <NamedIndividual IRI="#training_example_3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Все"/>
+        <NamedIndividual IRI="#training_example_4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Низкий"/>
+        <NamedIndividual IRI="#training_example_4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Поддержание_формы"/>
+        <NamedIndividual IRI="#training_example_4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Рекреационная"/>
+        <NamedIndividual IRI="#training_example_4"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Все"/>
+        <NamedIndividual IRI="#training_example_5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Низкий"/>
+        <NamedIndividual IRI="#training_example_5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Плавание"/>
+        <NamedIndividual IRI="#training_example_5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Поддержание_формы"/>
+        <NamedIndividual IRI="#training_example_5"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Верхняя"/>
+        <NamedIndividual IRI="#traiting_example_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Набор_массы"/>
+        <NamedIndividual IRI="#traiting_example_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Сводобные_веса"/>
+        <NamedIndividual IRI="#traiting_example_1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Средний"/>
+        <NamedIndividual IRI="#traiting_example_1"/>
+    </ClassAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Время_тренировки"/>
+        <NamedIndividual IRI="#training_example_2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">25</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Количество_подходов"/>
+        <NamedIndividual IRI="#training_example_2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Требуется_спортивный_инвентарь"/>
+        <NamedIndividual IRI="#training_example_2"/>
+        <Literal>нет</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Время_тренировки"/>
+        <NamedIndividual IRI="#training_example_3"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">50</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Количество_подходов"/>
+        <NamedIndividual IRI="#training_example_3"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">30</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Требуется_спортивный_инвентарь"/>
+        <NamedIndividual IRI="#training_example_3"/>
+        <Literal>нет</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Время_тренировки"/>
+        <NamedIndividual IRI="#training_example_4"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">10</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Количество_подходов"/>
+        <NamedIndividual IRI="#training_example_4"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">5</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Требуется_спортивный_инвентарь"/>
+        <NamedIndividual IRI="#training_example_4"/>
+        <Literal>нет</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Время_тренировки"/>
+        <NamedIndividual IRI="#training_example_5"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">30</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Количество_подходов"/>
+        <NamedIndividual IRI="#training_example_5"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">10</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Требуется_спортивный_инвентарь"/>
+        <NamedIndividual IRI="#training_example_5"/>
+        <Literal>нет</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Время_тренировки"/>
+        <NamedIndividual IRI="#traiting_example_1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">10</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Количество_подходов"/>
+        <NamedIndividual IRI="#traiting_example_1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Требуется_спортивный_инвентарь"/>
+        <NamedIndividual IRI="#traiting_example_1"/>
+        <Literal>да</Literal>
+    </DataPropertyAssertion>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#Время_тренировки"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#Количество_подходов"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#Требуется_спортивный_инвентарь"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#training_example_2</IRI>
+        <Literal>Бабочка</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#training_example_3</IRI>
+        <Literal>Интервальный бег</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#training_example_4</IRI>
+        <Literal>Удержание тела в воздухе</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#training_example_5</IRI>
+        <Literal>Кроль</Literal>
+    </AnnotationAssertion>
+    <AnnotationAssertion>
+        <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+        <IRI>#traiting_example_1</IRI>
+        <Literal>Жим штанги</Literal>
+    </AnnotationAssertion>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi -->
+

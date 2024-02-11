@@ -7,11 +7,17 @@ import json
 import matplotlib.pyplot as plt
 from matplotlib.pyplot import figure
 
-ods_path = "./Cities_v4.ods"
+ods_path = "./shares2.ods"
 json_path = "./Nodes.json"
 html_path = "./Table.html"
 tree_path = "./Tree.json"
+# shares_path = "./shares2.ods"
 
+
+def get_shares_list():
+     data = read_ods(ods_path, 1, headers=True)
+     arr_shares = data['Компания'].values
+     return arr_shares
 
 def get_data_from_ods(ods_path):
     data = read_ods(ods_path, 1, headers=True)
@@ -35,70 +41,61 @@ def write_data_to_html(data, html_path):
     f.write(tabulate(data, headers="keys", tablefmt='html'))
 
 
-def factorize_data(data_full, nodes):
-    data = data_full.copy(deep=True)
+def factorize_data(data, nodes):
+	del data['Компания']
 
-    del data['Город']
-    del data['Историческая личность']
+	# Факторизация на основе корреляционной матрицы для секторов
+	sectors = data['Тип'].str.split(',', 1).str
+	data['Тип'] = sectors[0]
+	
+	themes_list = nodes['Тип']
+	themes_corr = nodes['Тип.Корреляция']
 
-    # Факторизация на основе корреляционной матрицы для тематики
-    themes = data['Тематика'].str.split(',', 1).str
-    data['Тематика'] = themes[0]
+	for i in range(len(themes_list)):
+		data[themes_list[i]] = data['Тип'].map(lambda e: themes_corr[i][themes_list.index(e)])
+	del data['Тип']
+	
+	crafts = nodes['Акции']
+	data['Сектор'], unique = pd.factorize(data['Сектор'], na_sentinel=0)
+	data['Сектор'] = np.where((data['Сектор'] == 0), 0, data['Сектор'] / len(crafts))
 
-    themes_list = nodes['Тематика']
-    themes_corr = nodes['Тематика.Корреляция']
+	ctrs = nodes['Страна']
+	data['Страна'], unique = pd.factorize(data['Страна'], na_sentinel=0)
+	data['Страна'] = np.where((data['Страна'] == 0), 0, data['Страна'] / len(ctrs))
 
-    for i in range(len(themes_list)):
-        data[themes_list[i]] = data['Тематика'].map(lambda e: themes_corr[i][themes_list.index(e)])
-    del data['Тематика']
+	ctrs = nodes['Стабильность']
+	data['Стабильность'], unique = pd.factorize(data['Стабильность'], na_sentinel=0)
+	data['Стабильность'] = np.where((data['Стабильность'] == 0), 0, data['Стабильность'] / len(ctrs))
+		
+	ctrs = nodes['Наличие дивидендов']
+	data['Наличие дивидендов'], unique = pd.factorize(data['Наличие дивидендов'], na_sentinel=0)
+	data['Наличие дивидендов'] = np.where((data['Наличие дивидендов'] == 0), 0, data['Наличие дивидендов'] / len(ctrs))
+		
+	ctrs = nodes['Тип облигации']
+	data['Тип облигации'], unique = pd.factorize(data['Тип облигации'], na_sentinel=0)
+	data['Тип облигации'] = np.where((data['Тип облигации'] == 0), 0, data['Тип облигации'] / len(ctrs))
 
-    crafts = nodes['Природа']
-    data['Вид природы'], unique = pd.factorize(data['Вид природы'], na_sentinel=0)
-    data['Вид природы'] = np.where((data['Вид природы'] == 0), 0, data['Вид природы'] / len(crafts))
+	ctrs = nodes['Тип опциона']
+	data['Тип опциона'], unique = pd.factorize(data['Тип опциона'], na_sentinel=0)
+	data['Тип опциона'] = np.where((data['Тип опциона'] == 0), 0, data['Тип опциона'] / len(ctrs))
 
-    # Факторизация списка эпох путем разбиения на 2 списка
-    epochs = data['Историческая эпоха'].str.split(',', 1).str
-    data['Эпоха1'] = epochs[0]
-    data['Эпоха2'] = epochs[1]
+	data['Средний возраст владельцев'] = data['Средний возраст владельцев'].values / max(data['Средний возраст владельцев'].values)	
 
-    data['Эпоха1'].fillna("", inplace=True)
-    data['Эпоха2'].fillna("", inplace=True)
+	data['Срок'] = data['Срок'].values / max(data['Срок'].values)
+	data['P/E'] = data['P/E'].values / max(data['P/E'].values)
+	data['ROE, %'] = data['ROE, %'].values / max(data['ROE, %'].values)
+	data['Цена, руб'] = data['Цена, руб'].values / max(data['Цена, руб'].values)
+	data['Риск'] = data['Риск'].values / max(data['Риск'].values)
 
-    epochs_list = nodes['Эпоха']
-    for epoch in epochs_list:
-        data[epoch] = data['Эпоха1'].map(lambda e: 1 if (epoch in e) else 0) + \
-                      data['Эпоха2'].map(lambda e: 1 if (epoch in e) else 0)
+	data.to_excel("after_factorize.xlsx")
 
-    del data['Историческая эпоха']
-    del data['Эпоха1']
-    del data['Эпоха2']
+	return data
 
-    data['Город-курорт'], unique = pd.factorize(data['Город-курорт'])
-    data['Город-курорт'] += 1
-
-    del data['Область']
-    del data['Направление']
-    del data['Локация']
-
-    data['Расстояние от Москвы'] = data['Расстояние от Москвы'].values / max(data['Расстояние от Москвы'].values)
-
-    data['Население'] = [elem.replace('тыс', '') for elem in data['Население']]
-    data['Население'] = data['Население'].map(lambda e: float(e))
-    data['Население'] = data['Население'].values / max(data['Население'].values)
-
-    data['Цена'] = data['Цена'].values / max(data['Цена'].values)
-
-    # print(data)
-    # open("res_data.txt", "w").write(str(data))
-
-    return data
 
 
 def load_data():
     data = get_data_from_ods(ods_path)
     nodes = get_data_from_json(json_path)
-    data_fact = factorize_data(data, nodes)
-
-    del data['Историческая личность']
+    data_fact = factorize_data(data.copy(deep=True), nodes)
 
     return data, nodes, data_fact

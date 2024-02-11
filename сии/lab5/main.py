@@ -1,13 +1,14 @@
 from mainwindow import Ui_MainWindow
 from PyQt5 import QtWidgets, QtCore, QtGui
-from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QMessageBox, QTextEdit, QScrollArea
+from PyQt5.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QMessageBox, QTextEdit, QScrollArea, QListWidgetItem
 import sys
 import math
 from functools import partial
+from read_write_data import get_shares_list
 
 from forms import *
-from authorization import *
-from filter import find_cities_by_filters
+from likes import *
+from filter import find_shares_by_filters
 
 
 class mywindow(QMainWindow):
@@ -15,280 +16,182 @@ class mywindow(QMainWindow):
 		super(mywindow, self).__init__()
 		self.ui = Ui_MainWindow()
 		self.ui.setupUi(self)
-
+		self.sharesListStatuses = {}
+		self.isFiltering = False
 		self.user = ""
+		self.set_shares_list(get_shares_list())
 
-		# self.ui.frame_login.setVisible(True)
+		self.ui.btn_find.clicked.connect(self.btn_find_click)
+
+		self.ui.frame_search.setVisible(True)
 		self.ui.frame_cities.setVisible(True)
-		# self.ui.frame_search.setVisible(False)
-		self.ui.frame_logout.setVisible(False)
-
-		# self.ui.btn_login.clicked.connect(self.btn_login_click)
-		self.ui.btn_back.clicked.connect(self.btn_back_click)
-		# self.ui.btn_find.clicked.connect(self.btn_find_click)
-		self.ui.btn_recommend.clicked.connect(self.btn_recommend_click)
-
-
-		self.frame_cities = [self.ui.frame_city_1, self.ui.frame_city_2, self.ui.frame_city_3, \
+			
+		
+		self.frame_shaers = [self.ui.frame_city_1, self.ui.frame_city_2, self.ui.frame_city_3, \
 							self.ui.frame_city_4, self.ui.frame_city_5, self.ui.frame_city_6]
-		self.city_names = [self.ui.name_1, self.ui.name_2, self.ui.name_3, \
+		self.shares = [self.ui.name_1, self.ui.name_2, self.ui.name_3, \
 							self.ui.name_4, self.ui.name_5, self.ui.name_6]
 		self.properties = [self.ui.properties_1, self.ui.properties_2, self.ui.properties_3, \
 							self.ui.properties_4, self.ui.properties_5, self.ui.properties_6]
 
-		self.btns_like = [self.ui.btn_like_1, self.ui.btn_like_2, self.ui.btn_like_3, \
-							self.ui.btn_like_4, self.ui.btn_like_5, self.ui.btn_like_6]
-		self.btns_dislike = [self.ui.btn_dislike_1, self.ui.btn_dislike_2, self.ui.btn_dislike_3, \
-							self.ui.btn_dislike_4, self.ui.btn_dislike_5, self.ui.btn_dislike_6]
-		
 
-		self.connect_like_click()
-		self.connect_dislike_click()
+		self.ui.sharesList.itemDoubleClicked.connect(self._handleDoubleClick)
 
 
-		self.ui.btn_delete_like.clicked.connect(self.btn_delete_like_click)
-		self.ui.btn_delete_dislike.clicked.connect(self.btn_delete_dislike_click)
+
+	def set_shares_list(self, shares_arr):
+		for item in shares_arr:
+			elemList = QListWidgetItem(item)
+			elemList.setBackground(QtGui.QBrush(QtGui.QColor(QtCore.Qt.white)))
+			elemList.setForeground(QtGui.QBrush(QtGui.QColor(QtCore.Qt.black)))
+			self.sharesListStatuses[item] = {"status":"none", "prevStatus":"none"}
+			self.ui.sharesList.addItem(elemList)
+
+	def _handleDoubleClick(self, item):
+		self.clear_frames()
+		self.create_frames(6)
 
 
-		self.ui.frame_login.setVisible(False)
-			# self.ui.frame_search.setVisible(True)
-		self.ui.frame_cities.setVisible(True)
-		self.ui.frame_logout.setVisible(True)
-			
-		like_cities, dislike_cities, cities = login(self.user)
-		self.output_recommend_cities(like_cities, dislike_cities, cities)
+		if self.sharesListStatuses[item.text()]["status"] == "none":
+			if self.sharesListStatuses[item.text()]["prevStatus"] == "none":
+				self.sharesListStatuses[item.text()]["status"] = "like"
+				item.setBackground(QtGui.QBrush(QtGui.QColor(QtCore.Qt.green)))
+				like_shares, dislike_shares, shares = add_like(item.text())
+			elif self.sharesListStatuses[item.text()]["prevStatus"] == "like":
+				self.sharesListStatuses[item.text()]["status"] = "dislike"
+				self.sharesListStatuses[item.text()]["prevStatus"] = "none"
+				item.setBackground(QtGui.QBrush(QtGui.QColor(QtCore.Qt.red)))
+				like_shares, dislike_shares, shares = add_dislike(item.text())
+			elif self.sharesListStatuses[item.text()]["prevStatus"] == "dislike":
+				self.sharesListStatuses[item.text()]["status"] = "like"
+				self.sharesListStatuses[item.text()]["prevStatus"] = "none"
+				item.setBackground(QtGui.QBrush(QtGui.QColor(QtCore.Qt.green)))
+				like_shares, dislike_shares, shares = add_like(item.text())
+		elif self.sharesListStatuses[item.text()]["status"] == "like":
+			self.sharesListStatuses[item.text()]["status"] = "none"
+			self.sharesListStatuses[item.text()]["prevStatus"] = "like"
+			item.setBackground(QtGui.QBrush(QtGui.QColor(QtCore.Qt.white)))
+			like_shares, dislike_shares, shares = remove_like(item.text())
+		else:
+			self.sharesListStatuses[item.text()]["status"] = "none"
+			self.sharesListStatuses[item.text()]["prevStatus"] = "dislike"
+			item.setBackground(QtGui.QBrush(QtGui.QColor(QtCore.Qt.white)))
+			like_shares, dislike_shares, shares = remove_dislike(item.text())
 
-
-#####################################################
-# MATCH CITY LIKE CLICK WITH USER RECOMMENDATION
-#####################################################
-	def connect_like_click(self, filter_mode=False):
-		for i in range(len(self.btns_like)):
-			city_name = self.city_names[i]
-
-			if filter_mode:
-				self.btns_like[i].clicked.connect(partial(self.btn_like_filters_click, city_name))
-			else:
-				self.btns_like[i].clicked.connect(partial(self.btn_like_click, city_name))
-
-	def btn_like_click(self, city_name):
-		self.clear_properties()
-		city_name = city_name.text()
-		
-		like_cities, dislike_cities, cities = update_likes(self.user, city_name)
-		if (cities):
-			self.output_recommend_cities(like_cities, dislike_cities, cities)
-
-	def btn_like_filters_click(self, city_name):
-		city_name = city_name.text()		
-		like_cities, dislike_cities, cities = update_likes(self.user, city_name)
-
-		self.output_header_likes_dislikes(like_cities, dislike_cities)
-
-
-#####################################################
-# MATCH CITY DISLIKE CLICK WITH USER RECOMMENDATION
-#####################################################
-	def connect_dislike_click(self, filter_mode=False):
-		for i in range(len(self.btns_dislike)):
-			city_name = self.city_names[i]
-
-			if filter_mode:
-				self.btns_dislike[i].clicked.connect(partial(self.btn_dislike_filters_click, city_name))
-			else:
-				self.btns_dislike[i].clicked.connect(partial(self.btn_dislike_click, city_name))
-
-
-	def btn_dislike_click(self, city_name):
-		self.clear_properties()
-		city_name = city_name.text()
-
-		like_cities, dislike_cities, cities = update_dislikes(self.user, city_name)
-		if (cities):
-			self.output_recommend_cities(like_cities, dislike_cities, cities)
-
-	def btn_dislike_filters_click(self, city_name):
-		city_name = city_name.text()		
-		like_cities, dislike_cities, cities = update_dislikes(self.user, city_name)
-
-		self.output_header_likes_dislikes(like_cities, dislike_cities)
-
-
-#####################################################
-# DELETE LIKE/DISLIKE CITY AND MATCH WITH RECOMMENDATION
-#####################################################
-	def btn_delete_like_click(self):
-		self.clear_properties()
-		
-		likes = self.ui.text_like_cities.toPlainText()
-		if (len(likes) > 20):
-			like_cities, dislike_cities, cities = update_likes(self.user)
-			if (cities):
-				self.output_recommend_cities(like_cities, dislike_cities, cities)
-
-	def btn_delete_dislike_click(self):
-		self.clear_properties()
-		
-		like_cities, dislike_cities, cities = update_dislikes(self.user)
-		if (cities):
-			self.output_recommend_cities(like_cities, dislike_cities, cities)
+		if (len(shares) > 1):
+			self.output_recommend_cities(like_shares, dislike_shares, shares)
+		global array_likes, array_dislikes
+		print("AFTER UPDATE", array_likes, array_dislikes)
+		item.setSelected(False)
 
 
 #####################################################
 # SEARCH BY FILTER
 #####################################################
 	def btn_find_click(self):
+		self.isFiltering = True
 		self.clear_frames()
-
 		name = self.ui.line_city_input.text()
-		theme = self.ui.combo_theme.currentText()
 		in_ring = self.ui.check_in_ring.isChecked()
 		out_ring = self.ui.check_out_ring.isChecked()
 		distance = self.ui.combo_distance.currentText()
-		price = self.ui.combo_price.currentText()
+		theme = self.ui.combo_theme.currentText()
 
-		cities, another_filter = find_cities_by_filters(name, theme, in_ring, out_ring, distance, price)
-		
+		have_divs = None
+		if in_ring:
+			have_divs = True
+		if out_ring:
+			have_divs = False
+
+		cities, another_filter = find_shares_by_filters(name, theme, have_divs, distance)
+		if (cities == None):
+			self.output_warning2()
+			return
+
 		self.create_frames(len(cities))
 
 		if another_filter:
 			self.output_warning()
 
 		if cities:
-			self.connect_like_click(filter_mode=True)
-			self.connect_dislike_click(filter_mode=True)
-			self.output_cities(cities)
-
-
+			self.output_shares(cities)
 
 
 	def create_frames(self, num_frames):
 		for i in range(num_frames):
-			frame_city, name, properties, btn_like, btn_dislike = \
-				add_frame(self.ui.scrollAreaWidgetContents, i)   
-			self.ui.gridLayout.addWidget(frame_city, math.floor((i+3) / 3), i % 3, 1, 1)   
+			frame_city, name, properties = add_frame(self.ui.scrollAreaWidgetContents, i)   
+			self.ui.gridLayout.addWidget(frame_city, math.floor((i+3) / 3), i % 3)   
 
-			self.frame_cities.append(frame_city)
-			self.city_names.append(name)
+			self.frame_shaers.append(frame_city)
+			self.shares.append(name)
 			self.properties.append(properties)
-			self.btns_like.append(btn_like)
-			self.btns_dislike.append(btn_dislike)
 
 	def clear_frames(self):
-		for i in range(len(self.frame_cities)):
-			self.frame_cities[i].hide()
+		for i in range(len(self.frame_shaers)):
+			self.frame_shaers[i].hide()
 
-		del self.frame_cities[0:]
-		del self.city_names[0:]
+		del self.frame_shaers[0:]
+		del self.shares[0:]
 		del self.properties[0:]
-		del self.btns_like[0:]
-		del self.btns_dislike[0:]
 
 	def output_warning(self):
 		msg = QMessageBox()
-		msg.setText("По вашему запросу ничего не найдено.\nВозможно, вам понравятся следующие города...")
+		msg.setText("По вашему запросу ничего не найдено.\nВозможно, вам понравятся следующие бумаги...")
+		msg.setIcon(QMessageBox.Information)
+		msg.exec_()
+
+	def output_warning2(self):
+		msg = QMessageBox()
+		msg.setText("По вашему запросу ничего не найдено.")
 		msg.setIcon(QMessageBox.Information)
 		msg.exec_()
 
 
 #####################################################
-# LOGIN
+# OUTPUT shares
 #####################################################
-	def btn_login_click(self):
-		#self.user = "Max"
-		self.user = self.ui.line_name_input.text()
-		if (self.user):
-			self.ui.frame_login.setVisible(True)
-			# self.ui.frame_search.setVisible(True)
-			self.ui.frame_cities.setVisible(True)
-			self.ui.frame_logout.setVisible(True)
-			
-			like_cities, dislike_cities, cities = login(self.user)
-			self.output_recommend_cities(like_cities, dislike_cities, cities)
-
-
-	def btn_recommend_click(self):
-		self.clear_frames()
-
-		like_cities, dislike_cities, cities = get_recommend_cities()
-
-		self.create_frames(6)
-
-		if cities:
-			self.connect_like_click()
-			self.connect_dislike_click()
-			self.output_cities(cities)
-
-
-#####################################################
-# LOGOUT
-#####################################################
-	def btn_back_click(self):
-		self.ui.frame_cities.setVisible(False)
-		# self.ui.frame_search.setVisible(False)
-		self.ui.frame_login.setVisible(True)
-		self.ui.frame_logout.setVisible(False)
-		
-		self.ui.line_name_input.clear()
+	def output_recommend_cities(self, like_shares, dislike_shares, recommend_shares):
 		self.clear_properties()
+		self.output_shares(recommend_shares)
 
-		logout(self.user)
+	def output_shares(self, shares):
+		min_len = min(len(shares), len(self.shares))
+		for i in range(min_len):
+			cur_name = self.shares[i]
+			cur_property = self.properties[i]
+			cur_city = shares[i]
+			self.output_share(cur_name, cur_property, cur_city)
 
+	def output_share(self, name, properties, share):
+		name.setText(share["Компания"])
+
+		
+		properties.append("Цена: " + str(share["Цена, руб"]) + " руб")
+		if (share['Страна'] != None): 
+			properties.append("Страна: " + share["Страна"])
+		properties.append('ROE: ' + str(share["ROE, %"]) + "%")
+		properties.append('Наличие дивидендов: ' + str(share["Наличие дивидендов"]))
+		properties.append('Средний возраст владельцев: ' + str(share["Средний возраст владельцев"]))
+		if (share['Сектор'] != None): 
+			properties.append("Сектор: " + share["Сектор"])
+
+		if (share['P/E'] > 0): 
+			properties.append("P/E: " + str(share["P/E"]))
+		
+		if (share['Тип облигации'] != None): 
+			properties.append("Тип облигации: " + share["Тип облигации"])
+
+		if (share['Тип опциона'] != None): 
+			properties.append("Тип опциона: " + share["Тип опциона"])
+
+		if (share['Срок'] != None): 
+			properties.append("Срок: " + str(share["Срок"]) + " мес.")
+		
+		properties.append("Риск: " + str(share["Риск"]) + "%")
 
 	def clear_properties(self):
 		for cur_property in self.properties:
 			cur_property.clear()
-
-
-#####################################################
-# OUTPUT CITIES
-#####################################################
-	def output_recommend_cities(self, like_cities, dislike_cities, recommend_cities):
-		self.output_header_likes_dislikes(like_cities, dislike_cities)
-		self.output_cities(recommend_cities)
-
-	def output_header_likes_dislikes(self, like_cities, dislike_cities):
-		self.ui.text_like_cities.setText("Любимые города:")
-		for city in like_cities:
-			self.ui.text_like_cities.append('  ' + city["Город"])
-
-		self.ui.text_dislike_cities.setText("Нелюбимые города:")
-		for city in dislike_cities:
-			self.ui.text_dislike_cities.append('  ' + city["Город"])
-
-	def output_cities(self, cities):
-		min_len = min(len(cities), len(self.city_names))
-		for i in range(min_len):
-			cur_name = self.city_names[i]
-			cur_property = self.properties[i]
-			cur_city = cities[i]
-			self.output_city(cur_name, cur_property, cur_city)
-
-	def output_city(self, name, properties, city):
-		name.setText(city["Город"])
-
-		state_city_tourism = "Нет"
-
-		if str(city["Город-курорт"]) == "+":
-			state_city_tourism = "Да"
-		
-		properties.append("Область: " + city["Область"])
-		properties.append("Тематика: " + city["Тематика"])
-		if (city["Вид природы"] != "" and city["Вид природы"] != None):
-			properties.append("Природа: " + city["Вид природы"])
-		else:
-			properties.append("")
-
-		if (city["Историческая эпоха"] != "" and city["Историческая эпоха"] != None):
-			properties.append("Эпоха: " + city["Историческая эпоха"])
-		else:
-			properties.append("")
-
-		properties.append("Город-курорт: " + state_city_tourism)
-		properties.append("Направление: " + city["Направление"])
-		properties.append("Расстояние от Москвы: " + str(city["Расстояние от Москвы"]) + " км")
-		properties.append("Население: " + city["Население"])
-
 
 
 if __name__ == "__main__":

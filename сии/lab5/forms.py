@@ -202,11 +202,4 @@ def add_frame(scrollArea, idx):
 	name = add_name(frame_city, idx)
 	properties = add_properties(frame_city, idx)
 	
-	btn_like = add_btn_like(frame_city, idx)
-	btn_dislike = add_btn_dislike(frame_city, idx)
-	
-	_translate = QtCore.QCoreApplication.translate
-	btn_like.setText(_translate("MainWindow", "Нравится"))
-	btn_dislike.setText(_translate("MainWindow", "Не нравится")) 
-	
-	return frame_city, name, properties, btn_like, btn_dislike
+	return frame_city, name, properties
